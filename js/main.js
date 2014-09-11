@@ -24,23 +24,34 @@ $(function() {
       animate($loading, 'out');
     });
 
+  var initValues = function($e) {
+    $e.data('min', $e.cssvalue($e[0].id === 'nav' ? 'top' : 'bottom'));
+    return $e;
+  };
   var $container = $(container),
-    $nav = $(nav),
-    $footer = $(footer);
+    $nav = initValues($(nav)),
+    $footer = initValues($(footer));
+
   // btn
   $('.js-change-opacity').click(function() {
     container.style.opacity = this.dataset.opacity;
   });
+
   // move
-  var move = function(q) {
-    $nav.animate({
-      top: '+=' + q + 'px'
-    }, 0);
-    $footer.animate({
-      bottom: '+=' + q + 'px'
-    }, 0);
-  };
+  var move = (function() {
+    var animate = function($el, cssfield, q) {
+      var aniObject = {},
+        min = $el.data('min'),
+        v = $el.cssvalue(cssfield) + q;
+      aniObject[cssfield] = v > min ? v : min
+      $el.animate(aniObject, 0);
+    };
+    return function(q) {
+      animate($nav, 'top', q);
+      animate($footer, 'bottom', q);
+    };
+  })();
   $container.mousewheel(function(e) {
-    move(e.deltaY * Math.round(e.deltaFactor / 10));
+    move(e.deltaY * Math.round(e.deltaFactor / 10) * -1);
   });
 });

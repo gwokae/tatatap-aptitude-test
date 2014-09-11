@@ -23,6 +23,12 @@
 
 // Place any jQuery/helper plugins in here.
 
+(function($) {
+  $.fn.cssvalue = function(attr) {
+    return parseInt(this.css(attr), 10);
+  };
+})(jQuery);
+
 /*! Copyright (c) 2013 Brandon Aaron (http://brandon.aaron.sh)
  * Licensed under the MIT License (LICENSE.txt).
  *
