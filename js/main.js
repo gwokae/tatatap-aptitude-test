@@ -49,8 +49,10 @@ $(function() {
       $el.animate(aniObject, 0);
     };
     return function(q) {
-      animate($nav, 'top', q);
-      animate($footer, 'bottom', q);
+      if ((nav.offsetTop + nav.clientHeight + q) < footer.offsetTop) {
+        animate($nav, 'top', q);
+        animate($footer, 'bottom', q);
+      }
     };
   })();
   $container.mousewheel(function(e) {
