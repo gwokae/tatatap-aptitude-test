@@ -55,7 +55,27 @@ $(function() {
       }
     };
   })();
+
+  // mousewheel event
   $container.mousewheel(function(e) {
     move(e.deltaY * Math.round(e.deltaFactor / 10) * -1);
   });
+
+  // touch event
+  var sx, sy;
+  $container.on('touchstart', function(e) {
+    var t = e.originalEvent.changedTouches[0];
+    // sx = t.pageX;
+    sy = t.pageY;
+  });
+  $container.on('touchmove', function(e) {
+    var t = e.originalEvent.changedTouches[0];
+    var moveY = t.pageY - sy;
+    if (Math.abs(moveY) > 2) {
+      // sx = t.pageX;
+      sy = t.pageY;
+      move(moveY / 2);
+    }
+  });
+
 });
