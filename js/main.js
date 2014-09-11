@@ -24,8 +24,23 @@ $(function() {
       animate($loading, 'out');
     });
 
+  var $container = $(container),
+    $nav = $(nav),
+    $footer = $(footer);
   // btn
   $('.js-change-opacity').click(function() {
     container.style.opacity = this.dataset.opacity;
+  });
+  // move
+  var move = function(q) {
+    $nav.animate({
+      top: '+=' + q + 'px'
+    }, 0);
+    $footer.animate({
+      bottom: '+=' + q + 'px'
+    }, 0);
+  };
+  $container.mousewheel(function(e) {
+    move(e.deltaY * Math.round(e.deltaFactor / 10));
   });
 });
