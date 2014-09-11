@@ -17,15 +17,15 @@ $(function() {
     return $e;
   };
   var $loading = animate($('.loading.animated, .loading-overlay.animated'), 'in');
-  var cnt = 0,
-    $img = $('#container img').load(function() {
-      if (++cnt >= $img.length) {
-        animate($loading, 'out');
-      }
+  $('<img>')
+    .attr('src', 'http://lorempixel.com/1920/1080/people/p1')
+    .load(function() {
+      container.style.backgroundImage = 'url(' + this.src + ')';
+      animate($loading, 'out');
     });
 
   // btn
   $('.js-change-opacity').click(function() {
-    $img.css('opacity', this.dataset.opacity);
+    container.style.opacity = this.dataset.opacity;
   });
 });
