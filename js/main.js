@@ -1,4 +1,7 @@
 $(function() {
+  // container
+  container.style.height = window.innerHeight + 'px';
+
   // loading modal
   var animate = function($e, direction) {
     $e.each(function() {

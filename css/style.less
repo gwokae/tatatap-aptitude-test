@@ -52,39 +52,46 @@ div.container {
 @nav-h: 120px;
 @total-h: 1200px;
 @blank-color: #000;
-nav {
+nav, footer {
   position: absolute;
-  top: @total-h * -1;
   width: 100%;
   ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    &:before {
+    &:before, &:after {
       display: block;
-      content: "";
       width: 100%;
       height: @total-h;
       background-color: @blank-color;
     }
     li {
+      width: 33.33%;
       height: @nav-h;
       line-height: @nav-h;
       font-size: 2rem;
       display: inline-block;
-      width: 25%;
       background-color: #333;
       color: #fff;
       text-align: center;
       .opacity(.7);
       .box-shadow(0 0 0 0.1em #000 inset);
       .transition(all .3s ease);
-      &.center {
-        width: 50%;
-      }
       &:hover {
         .opacity(.9);
       }
     }
+  }
+}
+nav {
+  top: @total-h * -1;
+  ul:before {
+    content: "";
+  }
+}
+footer {
+  bottom: @total-h * -1;
+  ul:after {
+    content: "";
   }
 }
