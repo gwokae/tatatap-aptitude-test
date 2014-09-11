@@ -30,7 +30,9 @@ $(function() {
   };
   var $container = $(container),
     $nav = initValues($(nav)),
-    $footer = initValues($(footer));
+    $footer = initValues($(footer).animate({
+      bottom: '+=' + ((window.innerHeight - $(footer).find('ul > li').height()) / 2) + 'px'
+    }, 0));
 
   // btn
   $('.js-change-opacity').click(function() {
