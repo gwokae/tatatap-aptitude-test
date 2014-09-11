@@ -23,4 +23,9 @@ $(function() {
         animate($loading, 'out');
       }
     });
+
+  // btn
+  $('.js-change-opacity').click(function() {
+    $img.css('opacity', this.dataset.opacity);
+  });
 });
