@@ -22,9 +22,16 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class='loading animated fadeInDown'>
+    <div class='loading animated' data-in='fadeInDown' data-out='fadeOutUp'>
       <h1>Loading!</h1>
       <img src='img/hourglass.svg' />
+    </div>
+    <div class='loading-overlay animated'  data-in=''  data-out='fadeOutDown'></div>
+    <div id="container" class="container">
+      <div id="layer2">
+        <img src="http://lorempixel.com/1920/1080/people/p1">
+      </div>
+
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
