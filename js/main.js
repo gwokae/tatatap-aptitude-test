@@ -20,7 +20,7 @@ $(function() {
   $('<img>')
     .attr('src', 'http://lorempixel.com/1920/1080/people/p1')
     .load(function() {
-      container.style.backgroundImage = 'url(' + this.src + ')';
+      layer2.style.backgroundImage = 'url(' + this.src + ')';
       animate($loading, 'out');
     });
 
@@ -36,7 +36,9 @@ $(function() {
 
   // btn
   $('.js-change-opacity').click(function() {
-    container.style.opacity = this.dataset.opacity;
+    layer2.style.opacity = this.dataset.opacity;
+    container.style.backgroundColor = this.dataset.backgroundColor === 'random' ? "#" + Math.round(Math.random() *
+      16777215).toString(16) : this.dataset.backgroundColor;
   });
 
   // move

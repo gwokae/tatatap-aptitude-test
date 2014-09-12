@@ -43,9 +43,14 @@ div.loading-overlay {
 div.container {
   position: relative;
   overflow: hidden;
+  .transition(all 1s ease);
+}
+div#layer2{
   height: 100%;
+  width: 100%;
+  position: absolute;
   background-size: 100% auto;
-  .transition(all 3s ease);
+  .transition(all 2s ease);
 }
 @nav-h: 120px;
 @total-h: 1200px;
