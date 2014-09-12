@@ -74,7 +74,11 @@ $(function() {
   $container.on('touchstart', function(e) {
     touch = parseTouch(e);
   });
-  $container.on('touchend', function(e) {});
+  $container.on('touchend', function(e) {
+    if ((new Date().getTime() - touch.ts < 150) && e.target.classList.contains('js-change-opacity')) {
+      e.target.click();
+    }
+  });
   $container.on('touchmove', function(e) {
     var t = parseTouch(e);
     var moveY = t.y - touch.y;
