@@ -62,20 +62,25 @@ $(function() {
   });
 
   // touch event
-  var sx, sy;
+  var touch;
+  var parseTouch = function(e) {
+    var t = e.originalEvent.changedTouches[0];
+    return {
+      x: t.pageX,
+      y: t.pageY,
+      ts: e.type === 'touchstart' ? e.timeStamp : touch.ts
+    };
+  }
   $container.on('touchstart', function(e) {
-    var t = e.originalEvent.changedTouches[0];
-    // sx = t.pageX;
-    sy = t.pageY;
+    touch = parseTouch(e);
   });
+  $container.on('touchend', function(e) {});
   $container.on('touchmove', function(e) {
-    var t = e.originalEvent.changedTouches[0];
-    var moveY = t.pageY - sy;
+    var t = parseTouch(e);
+    var moveY = t.y - touch.y;
     if (Math.abs(moveY) > 2) {
-      // sx = t.pageX;
-      sy = t.pageY;
+      touch = t
       move(moveY / 2);
     }
   });
-
 });
