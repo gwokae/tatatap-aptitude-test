@@ -99,3 +99,27 @@ footer {
     content: "";
   }
 }
+
+@media screen and (max-device-width: 384px) {
+  div.loading {
+    width: 90%;
+    left: 5%;
+    top: 5%;
+    padding: 1rem 0;
+  }
+}
+@media screen and (max-device-height: 384px) {
+  div.loading {
+    width: 80%;
+    left: 10%;
+    top: 5%;
+    padding: 1rem 0;
+    > h1 {
+      font-size: 2rem;
+    }
+    > img {
+      height: 100px;
+      padding: 16px;
+    }
+  }
+}
