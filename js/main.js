@@ -51,7 +51,11 @@ $(function() {
       $el.animate(aniObject, 0);
     };
     return function(q) {
-      if ((nav.offsetTop + nav.clientHeight + q) < footer.offsetTop) {
+      var diff = footer.offsetTop - (nav.offsetTop + nav.clientHeight);
+      if (diff >= 0 || q < 0) {
+        if (diff - q - q < 0) {
+          q = Math.ceil(diff / 2);
+        }
         animate($nav, 'top', q);
         animate($footer, 'bottom', q);
       }
